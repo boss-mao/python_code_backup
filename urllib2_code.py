@@ -44,7 +44,9 @@ urllib2.install_opener(opener)
 #发送post请求
 headers = public_request_headers.copy()
 headers["Referer"] = "",
-request_data = urllib.urlencode({"username": "aaaa", "passwd": "bbbb"})
+#随机生成一个Email
+email=''.join([random.choice('0123456789abcdegf') for i in range(11)]) + "@" + random.choice(["qq", "hotmail", "163"]) + ".com"
+request_data = urllib.urlencode({"email": email, "passwd": "bbbb"})
 request = urllib2.Request(url="",
                           headers=headers,
                           data=request_data)
