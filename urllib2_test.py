@@ -51,4 +51,28 @@ request = urllib2.Request(url="",
                           headers=headers,
                           data=request_data)
 response = opener.open(request)
+#打印所有cookie
+cookieJar._cookies.values()
 data=parse_response_body(response)
+
+
+
+###########################################################################
+#另一种写法
+try:
+    mainResponse=urllib2.urlopen(urllib2.Request(url="http://wwww.baidu.com/", headers=public_request_headers))
+    print mainResponse.info()
+    print cookieJar._cookies.values()
+    #urllib2请求错误时会抛出异常 
+except urllib2.URLError as e:
+    print u'异常了'
+else: 
+    pass
+
+###########################################################################
+#可用这个处理302，当异常抛出
+class RedirctHandler(urllib2.HTTPRedirectHandler):
+    def http_error_301(self, req, fp, code, msg, headers):
+        pass
+    def http_error_302(self, req, fp, code, msg, headers):
+        pass
