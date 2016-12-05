@@ -1,7 +1,8 @@
 import pymssql
 from datetime import datetime
 from uuid import uuid1
-
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 class SqlHelper:
     def __init__(self, host, user, pwd, db):
