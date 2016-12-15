@@ -34,18 +34,19 @@ def parse_item(driver):
 
 #解析当前页
 def parse_list(driver):
+    while True:
     try:
-         items = parse_item(driver)
-         for item in items:
-             add_item(item)
+        items = parse_item(driver)
+        for item in items:
+            add_item(item)
     except Exception as ex:
-         logging.exception(ex)
+        logging.exception(ex)
 
     # 点击进入下一页
     next_page_element = driver.find_element_by_class_name("op_trust_page_next")
-    next_page_element.click();
     time.sleep(1)
-    return parse_list(driver)
+    next_page_element.click()
+    time.sleep(random.randint(1, 3))
 
 #通过百度抓取失信人员名单
 def main():
