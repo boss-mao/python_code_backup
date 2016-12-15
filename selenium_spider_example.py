@@ -25,9 +25,9 @@ def parse_item(driver):
         trs = order_list_node.find_elements_by_tag_name("tr")
         for tr in trs:
             key_element = tr.find_element_by_xpath('td[@class="op_trust_tdLeft"]')
-            key = key_element.get_attribute('innerText')
+            key = key_element.get_attribute('innerText').replace(u"：","")
             value_element = tr.find_element_by_xpath('td[@class="op_trust_tdRight"]')
-            value = value_element.get_attribute('innerText')
+            value = value_element.get_attribute('innerText').replace(u"：","")
             item[key] = value
         yield item
     pass
