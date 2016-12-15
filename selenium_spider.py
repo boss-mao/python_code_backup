@@ -49,13 +49,15 @@ def parse_list(driver):
 
 #通过百度抓取失信人员名单
 def main():
-    driver = webdriver.Chrome()
-    driver.get(
-        'https://www.baidu.com/s?wd=%E5%A4%B1%E4%BF%A1%E4%BA%BA%E5%91%98%E5%90%8D%E5%8D%95%E6%9F%A5%E8%AF%A2&rsv_idx=2&tn=baiduhome_pg&usm=1&ie=utf-8&rsv_crq=7&bs=%E4%B8%AD%E5%9B%BD%E6%B3%95%E9%99%A2%E7%BD%91+%E5%A4%B1%E4%BF%A1&qq-pf-to=pcqq.temporaryc2c')
-    #等待网页加载完成
-    time.sleep(3)
-    parse_list(driver)
-    driver.close()
+   try:
+       driver = webdriver.Chrome()
+       driver.get(
+           'https://www.baidu.com/s?wd=%E5%A4%B1%E4%BF%A1%E4%BA%BA%E5%91%98%E5%90%8D%E5%8D%95%E6%9F%A5%E8%AF%A2&rsv_idx=2&tn=baiduhome_pg&usm=1&ie=utf-8&rsv_crq=7&bs=%E4%B8%AD%E5%9B%BD%E6%B3%95%E9%99%A2%E7%BD%91+%E5%A4%B1%E4%BF%A1&qq-pf-to=pcqq.temporaryc2c')
+       # 等待网页加载完成
+       time.sleep(3)
+       parse_list(driver)
+   finally:
+       driver.close()
 
 
 if __name__ == "__main__":
